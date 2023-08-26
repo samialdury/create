@@ -1,0 +1,51 @@
+{
+    "name": "@samialdury/create-nodejs-project",
+    "version": "2.1.2",
+    "description": "Template repository for setting up new Node.js project",
+    "homepage": "https://github.com/samialdury/create-nodejs-project#readme",
+    "bugs": {
+        "url": "https://github.com/samialdury/create-nodejs-project/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samialdury/create-nodejs-project.git"
+    },
+    "license": "MIT",
+    "author": "Sami Al-Dury",
+    "type": "module",
+    "exports": "./dist/main.js",
+    "bin": "./dist/main.js",
+    "files": [
+        "./dist"
+    ],
+    "dependencies": {
+        "@inquirer/prompts": "3.0.3",
+        "chalk": "5.3.0",
+        "execa": "7.2.0",
+        "fs-extra": "11.1.1",
+        "ora": "7.0.1",
+        "which": "3.0.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "17.7.1",
+        "@samialdury/config": "5.6.1",
+        "@types/fs-extra": "11.0.1",
+        "@types/node": "20.5.0",
+        "@types/which": "3.0.0",
+        "eslint": "8.47.0",
+        "husky": "8.0.3",
+        "lint-staged": "14.0.0",
+        "prettier": "3.0.2",
+        "semantic-release": "21.0.9",
+        "tsup": "7.2.0",
+        "typescript": "5.1.6"
+    },
+    "engines": {
+        "node": ">=18",
+        "pnpm": ">=8"
+    },
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    }
+}
