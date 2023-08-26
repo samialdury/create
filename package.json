@@ -1,14 +1,14 @@
 {
-    "name": "@samialdury/create-nodejs-project",
+    "name": "@samialdury/create-nodejs-api",
     "version": "2.1.2",
-    "description": "Template repository for setting up new Node.js project",
-    "homepage": "https://github.com/samialdury/create-nodejs-project#readme",
+    "description": "Template repository for setting up new Node.js API",
+    "homepage": "https://github.com/samialdury/create-nodejs-api#readme",
     "bugs": {
-        "url": "https://github.com/samialdury/create-nodejs-project/issues"
+        "url": "https://github.com/samialdury/create-nodejs-api/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/samialdury/create-nodejs-project.git"
+        "url": "git+https://github.com/samialdury/create-nodejs-api.git"
     },
     "license": "MIT",
     "author": "Sami Al-Dury",

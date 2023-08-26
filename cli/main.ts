@@ -16,8 +16,8 @@ import { cloneRepo } from './git.js'
 import { finishSpinner, printNextSteps, startSpinner } from './output.js'
 import { promptForProjectName } from './prompts.js'
 
-const DEFAULT_PROJECT_NAME = 'nodejs-project'
-const TEMPLATE_REPO = 'samialdury/nodejs-project'
+const DEFAULT_PROJECT_NAME = 'nodejs-api'
+const TEMPLATE_REPO = 'samialdury/nodejs-api'
 
 async function main(): Promise<void> {
     console.log()

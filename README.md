@@ -1,11 +1,11 @@
-# Create Node.js project
+# Create Node.js API
 
-CLI for my [Node.js project template](https://github.com/samialdury/nodejs-project).
+CLI for my [Node.js API template](https://github.com/samialdury/nodejs-api).
 
 ## Usage
 
 ```sh
-pnpm create @samialdury/nodejs-project
+pnpm create @samialdury/nodejs-api
 ```
 
 ## License

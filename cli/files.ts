@@ -41,7 +41,7 @@ export async function replaceInTemplateFiles(
             path.join(projectDirectory, 'README.md'),
             /[^]*/,
             `# ${projectName}\n
-Created using [nodejs-project](https://github.com/samialdury/nodejs-project) template by [samialdury](https://github.com/samialdury).\n`,
+Created using [nodejs-api](https://github.com/samialdury/nodejs-api) template by [samialdury](https://github.com/samialdury).\n`,
         ),
     ])
 
