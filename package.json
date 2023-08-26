@@ -1,6 +1,6 @@
 {
     "name": "@samialdury/create-nodejs-api",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Template repository for setting up new Node.js API",
     "homepage": "https://github.com/samialdury/create-nodejs-api#readme",
     "bugs": {
