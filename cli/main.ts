@@ -14,7 +14,7 @@ type KeysOfMap<T> = T extends Map<infer K, unknown> ? K : never
 
 const TEMPLATES = new Map([
     ['nodejs-api', 'samialdury/nodejs-api'],
-    // ['nodejs-project', 'samialdury/nodejs-project'],
+    ['nodejs-project', 'samialdury/nodejs-project'],
 ] as const)
 
 function getValidTemplates(): string {
