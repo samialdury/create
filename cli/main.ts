@@ -2,27 +2,15 @@
 
 // import path from 'node:path'
 
-import { pathExists } from 'fs-extra/esm'
-import color from 'picocolors'
-
 import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
-import { getProjectDirectory, handleExistingProjectDirectory } from './files.js'
+import {
+    checkIfFileExists,
+    getProjectDirectory,
+    handleExistingProjectDirectory,
+} from './files.js'
 import { cloneRepo } from './git.js'
-import { finishSpinner, printNextSteps, startSpinner } from './output.js'
+import { color, finishSpinner, printNextSteps, startSpinner } from './output.js'
 import { promptForProjectName } from './prompts.js'
-
-// import color from 'picocolors'
-
-// import { isCmdAvailable, runFormatAndLint, runInstall } from './cmds.js'
-// import {
-//     getProjectDirectory,
-//     replaceInTemplateFiles,
-//     handleExistingProjectDirectory,
-//     removeFile,
-// } from './files.js'
-// import { cloneRepo } from './git.js'
-// import { finishSpinner, printNextSteps, startSpinner } from './output.js'
-// import { promptForProjectName } from './prompts.js'
 
 type KeysOfMap<T> = T extends Map<infer K, unknown> ? K : never
 
@@ -69,7 +57,7 @@ async function main(): Promise<void> {
     const spinner = startSpinner(
         `Checking directory ${color.cyan(projectDirectory)}...\n`,
     )
-    const projectDirectoryExists = await pathExists(projectDirectory)
+    const projectDirectoryExists = await checkIfFileExists(projectDirectory)
     if (projectDirectoryExists) {
         handleExistingProjectDirectory(projectDirectory, spinner)
     }

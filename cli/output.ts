@@ -2,6 +2,8 @@ import type { Ora } from 'ora'
 import ora from 'ora'
 import color from 'picocolors'
 
+export { default as color } from 'picocolors'
+
 export function startSpinner(label: string): Ora {
     return ora(label).start()
 }

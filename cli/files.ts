@@ -1,4 +1,4 @@
-import { readFile, rm, writeFile } from 'node:fs/promises'
+import { access, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import type { Ora } from 'ora'
@@ -117,4 +117,13 @@ Created using [nodejs-api](https://github.com/samialdury/nodejs-api) template by
 
 export async function removeFile(filePath: string): Promise<void> {
     return rm(filePath, { force: true })
+}
+
+export async function checkIfFileExists(filePath: string): Promise<boolean> {
+    try {
+        await access(filePath)
+        return true
+    } catch {
+        return false
+    }
 }
