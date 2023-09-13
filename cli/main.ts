@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-// import path from 'node:path'
-
 import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
 import {
     checkIfFileExists,
@@ -51,17 +49,21 @@ async function main(): Promise<void> {
         process.exit(1)
     }
 
-    console.log(`Creating project ${projectName} from template ${template}`)
+    console.log(
+        color.yellow(
+            `Creating project \`${projectName}\` from template \`${template}\`...\n`,
+        ),
+    )
 
     const projectDirectory = getProjectDirectory(projectName)
-    const spinner = startSpinner(
+    const directoryCheckSpinner = startSpinner(
         `Checking directory ${color.cyan(projectDirectory)}...\n`,
     )
     const projectDirectoryExists = await checkIfFileExists(projectDirectory)
     if (projectDirectoryExists) {
-        handleExistingProjectDirectory(projectDirectory, spinner)
+        handleExistingProjectDirectory(projectDirectory, directoryCheckSpinner)
     }
-    finishSpinner(spinner, color.green('Directory available'))
+    finishSpinner(directoryCheckSpinner, color.green('Directory available'))
 
     const cloneSpinner = startSpinner(`Cloning template...\n`)
     await cloneRepo(templateRepo, projectDirectory)
@@ -78,7 +80,7 @@ async function main(): Promise<void> {
     finishSpinner(templateSpinner, color.green('Template ready'))
 
     finishSpinner(
-        spinner,
+        directoryCheckSpinner,
         color.green(
             `Project ${color.cyan(projectName)} created in ${color.cyan(
                 projectDirectory,
