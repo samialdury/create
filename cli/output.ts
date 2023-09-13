@@ -15,5 +15,5 @@ export function printNextSteps(projectName: string): void {
     console.log('Next steps:')
     console.log(`  ${chalk.blue(`cd ${projectName}`)}`)
     console.log(`  ${chalk.blue('git init')}`)
-    console.log(`  ${chalk.blue('make')}`)
+    console.log(`  ${chalk.blue('make help')}`)
 }

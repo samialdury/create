@@ -3,7 +3,7 @@ PROJECT_NAME := $(shell basename "$(PWD)")
 
 BIN := node_modules/.bin
 
-SRC_DIR := src
+SRC_DIR := cli
 BUILD_DIR := dist
 CACHE_DIR := .cache
 
@@ -18,6 +18,10 @@ help:
 install: ## install all dependencies
 	@pnpm install
 	@$(BIN)/husky install
+
+.PHONY: dev
+dev: ## run TS and watch for changes (args=<string>)
+	@node --no-warnings --loader tsx --watch --watch-preserve-output $(SRC_DIR)/main.ts $(args)
 
 .PHONY: typecheck
 typecheck: ## compile TS (no emit)

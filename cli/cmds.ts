@@ -2,15 +2,16 @@ import { execa } from 'execa'
 import which from 'which'
 
 export async function runInstall(projectDirectory: string): Promise<void> {
-    await execa('pnpm', ['install'], {
+    await execa('make', ['install', 'skip-postinstall=true'], {
         cwd: projectDirectory,
     })
 }
 
-export async function runFormatAndLint(
+export async function runPrepareScript(
     projectDirectory: string,
+    projectName: string,
 ): Promise<void> {
-    await execa('make', ['format', 'lint'], {
+    await execa('make', ['prepare', `name=${projectName}`], {
         cwd: projectDirectory,
     })
 }

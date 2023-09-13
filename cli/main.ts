@@ -1,84 +1,93 @@
 #!/usr/bin/env node
 
-import path from 'node:path'
+// import path from 'node:path'
 
 import chalk from 'chalk'
 import { pathExists } from 'fs-extra/esm'
 
-import { isCmdAvailable, runFormatAndLint, runInstall } from './cmds.js'
-import {
-    getProjectDirectory,
-    replaceInTemplateFiles,
-    handleExistingProjectDirectory,
-    removeFile,
-} from './files.js'
+import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
+import { getProjectDirectory, handleExistingProjectDirectory } from './files.js'
 import { cloneRepo } from './git.js'
 import { finishSpinner, printNextSteps, startSpinner } from './output.js'
 import { promptForProjectName } from './prompts.js'
 
-const DEFAULT_PROJECT_NAME = 'nodejs-api'
-const TEMPLATE_REPO = 'samialdury/nodejs-api'
+// import chalk from 'chalk'
+
+// import { isCmdAvailable, runFormatAndLint, runInstall } from './cmds.js'
+// import {
+//     getProjectDirectory,
+//     replaceInTemplateFiles,
+//     handleExistingProjectDirectory,
+//     removeFile,
+// } from './files.js'
+// import { cloneRepo } from './git.js'
+// import { finishSpinner, printNextSteps, startSpinner } from './output.js'
+// import { promptForProjectName } from './prompts.js'
+
+type KeysOfMap<T> = T extends Map<infer K, unknown> ? K : never
+
+const TEMPLATES = new Map([
+    ['nodejs-api', 'samialdury/nodejs-api'],
+    // ['nodejs-project', 'samialdury/nodejs-project'],
+] as const)
+
+function getValidTemplates(): string {
+    return [...TEMPLATES.keys()].join('\n- ')
+}
 
 async function main(): Promise<void> {
-    console.log()
-
-    const [gitAvailable, pnpmAvailable] = await Promise.all([
-        isCmdAvailable('git'),
-        isCmdAvailable('pnpm'),
-    ])
-
-    if (!gitAvailable) {
-        throw new Error(
-            'Git is not installed. Please install it and try again.',
+    const template = process.argv[2] as KeysOfMap<typeof TEMPLATES> | undefined
+    if (!template) {
+        console.error(
+            `Please specify a template.\nValid templates are:\n- ${getValidTemplates()}`,
         )
+        process.exit(1)
     }
 
-    if (!pnpmAvailable) {
-        throw new Error(
-            'pnpm is not installed. Please install it and try again.',
+    const templateRepo = TEMPLATES.get(template)
+    if (!templateRepo) {
+        console.error(
+            `Template \`${template}\` not found.\nValid templates are:\n  - ${getValidTemplates()}`,
         )
+        process.exit(1)
     }
 
-    const projectName = await promptForProjectName(DEFAULT_PROJECT_NAME)
+    const projectName =
+        process.argv[3] ?? (await promptForProjectName(template))
+
+    const bunAvailable = await isCmdAvailable('bun')
+    if (!bunAvailable) {
+        console.error(
+            '`bun` is not installed. Please install it and try again.',
+        )
+        process.exit(1)
+    }
+
+    console.log(`Creating project ${projectName} from template ${template}`)
+
     const projectDirectory = getProjectDirectory(projectName)
-
     const spinner = startSpinner(
         `Checking directory ${chalk.cyan(projectDirectory)}...\n`,
     )
-
     const projectDirectoryExists = await pathExists(projectDirectory)
-
     if (projectDirectoryExists) {
         handleExistingProjectDirectory(projectDirectory, spinner)
     }
-
     finishSpinner(spinner, chalk.green('Directory available'))
 
     const cloneSpinner = startSpinner(`Cloning template...\n`)
-
-    await cloneRepo(TEMPLATE_REPO, projectDirectory)
-
+    await cloneRepo(templateRepo, projectDirectory)
     finishSpinner(cloneSpinner, chalk.green(chalk.green('Template cloned')))
 
-    const templateSpinner = startSpinner('Setting up template files...\n')
-
-    await replaceInTemplateFiles(
-        DEFAULT_PROJECT_NAME,
-        projectDirectory,
-        projectName,
+    const installSpinner = startSpinner(
+        'Installing dependencies (this may take a while)...\n',
     )
-
-    finishSpinner(templateSpinner, chalk.green('Template files set up'))
-
-    await removeFile(path.join(projectDirectory, 'CHANGELOG.md'))
-
-    const installSpinner = startSpinner('Installing dependencies...\n')
     await runInstall(projectDirectory)
     finishSpinner(installSpinner, chalk.green('Dependencies installed'))
 
-    const formatAndLintSpinner = startSpinner('Formatting and linting...\n')
-    await runFormatAndLint(projectDirectory)
-    finishSpinner(formatAndLintSpinner, chalk.green('Formatted and linted\n'))
+    const templateSpinner = startSpinner('Setting up template...\n')
+    await runPrepareScript(projectDirectory, projectName)
+    finishSpinner(templateSpinner, chalk.green('Template ready'))
 
     finishSpinner(
         spinner,
@@ -91,9 +100,4 @@ async function main(): Promise<void> {
     printNextSteps(projectName)
 }
 
-try {
-    await main()
-} catch (err) {
-    console.error((err as Error).message)
-    process.exit(1)
-}
+await main()

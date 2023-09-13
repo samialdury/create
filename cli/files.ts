@@ -12,7 +12,11 @@ export function handleExistingProjectDirectory(
     spinner: Ora,
 ): void {
     spinner.fail()
-    throw new Error(`Project directory ${projectDirectory} already exists`)
+    console.error(
+        `Project directory ${projectDirectory} already exists. Please remove it and try again.`,
+    )
+    // eslint-disable-next-line unicorn/no-process-exit
+    process.exit(1)
 }
 
 async function replaceInFile(
@@ -21,7 +25,12 @@ async function replaceInFile(
     replaceValue: string,
 ): Promise<void> {
     const file = await readFile(filePath, 'utf8')
-    const replacedFile = file.replace(searchValue, replaceValue)
+    const replacedFile = file.replace(
+        searchValue instanceof RegExp
+            ? searchValue
+            : new RegExp(searchValue, 'g'),
+        replaceValue,
+    )
     await writeFile(filePath, replacedFile, 'utf8')
 }
 
@@ -46,6 +55,11 @@ Created using [nodejs-api](https://github.com/samialdury/nodejs-api) template by
     ])
 
     if (projectName !== defaultProjectName) {
+        const iacDirectory = path.join(projectDirectory, 'iac')
+        const localDirectory = path.join(projectDirectory, 'local')
+        const devDirectory = path.join(localDirectory, 'dev')
+        const testDirectory = path.join(localDirectory, 'test')
+
         await Promise.all([
             replaceInFile(
                 path.join(projectDirectory, 'package.json'),
@@ -53,17 +67,47 @@ Created using [nodejs-api](https://github.com/samialdury/nodejs-api) template by
                 projectName,
             ),
             replaceInFile(
-                path.join(projectDirectory, '.dev.env'),
-                defaultProjectName,
-                projectName,
-            ),
-            replaceInFile(
-                path.join(projectDirectory, '.test.env'),
-                defaultProjectName,
-                projectName,
-            ),
-            replaceInFile(
                 path.join(projectDirectory, 'Dockerfile'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(projectDirectory, 'Makefile'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(devDirectory, '.dev.env'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(iacDirectory, 'Pulumi.yaml'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(iacDirectory, 'Pulumi.yaml'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(localDirectory, 'proxy.docker-compose.yml'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(localDirectory, 'proxy.docker-compose.yml'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(devDirectory, 'dev.docker-compose.yml'),
+                defaultProjectName,
+                projectName,
+            ),
+            replaceInFile(
+                path.join(testDirectory, 'test.docker-compose.yml'),
                 defaultProjectName,
                 projectName,
             ),
