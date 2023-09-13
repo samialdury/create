@@ -19,11 +19,11 @@
         "./dist"
     ],
     "dependencies": {
-        "@inquirer/prompts": "3.0.3",
-        "execa": "7.2.0",
+        "@inquirer/prompts": "3.1.1",
+        "execa": "8.0.1",
         "ora": "7.0.1",
         "picocolors": "1.0.0",
-        "which": "3.0.1"
+        "which": "4.0.0"
     },
     "devDependencies": {
         "@commitlint/cli": "17.7.1",
