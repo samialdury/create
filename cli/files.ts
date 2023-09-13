@@ -1,7 +1,6 @@
+import type { Ora } from 'ora'
 import { access } from 'node:fs/promises'
 import path from 'node:path'
-
-import type { Ora } from 'ora'
 
 export function getProjectDirectory(projectName: string): string {
     return path.resolve(process.cwd(), projectName)

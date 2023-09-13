@@ -4,8 +4,8 @@ export async function promptForProjectName(
     defaultProjectName: string,
 ): Promise<string> {
     const projectName = await input({
-        message: 'What is the name of your project?',
         default: defaultProjectName,
+        message: 'What is the name of your project?',
         transformer: (input: string) => {
             return input.trim()
         },
