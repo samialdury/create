@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/samialdury/create/compare/v1.0.0...v1.1.0) (2023-09-13)
+
+
+### Features
+
+* enable `nodejs-project` template ([8341e38](https://github.com/samialdury/create/commit/8341e3863a3635b483cfce21a8ab87fb4c5e81cd))
+
 # 1.0.0 (2023-09-13)
 
 
