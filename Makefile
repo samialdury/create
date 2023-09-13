@@ -1,5 +1,7 @@
+.DEFAULT_GOAL ?= help
+
 COMMIT_SHA := $(shell git rev-parse --short HEAD)
-PROJECT_NAME := $(shell basename "$(PWD)")
+PROJECT_NAME := @samialdury/create
 
 BIN := node_modules/.bin
 

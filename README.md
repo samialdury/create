@@ -1,11 +1,11 @@
-# Create Node.js API
+# @samialdury/create
 
-CLI for my [Node.js API template](https://github.com/samialdury/nodejs-api).
+TODO
 
 ## Usage
 
 ```sh
-pnpm create @samialdury/nodejs-api
+TODO
 ```
 
 ## License

@@ -1,14 +1,14 @@
 {
-    "name": "@samialdury/create-nodejs-api",
-    "version": "2.0.0",
-    "description": "Template repository for setting up new Node.js API",
-    "homepage": "https://github.com/samialdury/create-nodejs-api#readme",
+    "name": "@samialdury/create",
+    "version": "0.0.0",
+    "description": "CLI for my templates",
+    "homepage": "https://github.com/samialdury/create#readme",
     "bugs": {
-        "url": "https://github.com/samialdury/create-nodejs-api/issues"
+        "url": "https://github.com/samialdury/create/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/samialdury/create-nodejs-api.git"
+        "url": "git+https://github.com/samialdury/create.git"
     },
     "license": "MIT",
     "author": "Sami Al-Dury",
