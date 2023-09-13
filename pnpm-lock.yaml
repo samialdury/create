@@ -8,9 +8,6 @@ dependencies:
   '@inquirer/prompts':
     specifier: 3.0.3
     version: 3.0.3
-  chalk:
-    specifier: 5.3.0
-    version: 5.3.0
   execa:
     specifier: 7.2.0
     version: 7.2.0
@@ -20,6 +17,9 @@ dependencies:
   ora:
     specifier: 7.0.1
     version: 7.0.1
+  picocolors:
+    specifier: 1.0.0
+    version: 1.0.0
   which:
     specifier: 3.0.1
     version: 3.0.1
@@ -4208,7 +4208,6 @@ packages:
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-    dev: true
 
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}

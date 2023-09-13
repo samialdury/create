@@ -2,8 +2,8 @@
 
 // import path from 'node:path'
 
-import chalk from 'chalk'
 import { pathExists } from 'fs-extra/esm'
+import color from 'picocolors'
 
 import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
 import { getProjectDirectory, handleExistingProjectDirectory } from './files.js'
@@ -11,7 +11,7 @@ import { cloneRepo } from './git.js'
 import { finishSpinner, printNextSteps, startSpinner } from './output.js'
 import { promptForProjectName } from './prompts.js'
 
-// import chalk from 'chalk'
+// import color from 'picocolors'
 
 // import { isCmdAvailable, runFormatAndLint, runInstall } from './cmds.js'
 // import {
@@ -67,32 +67,32 @@ async function main(): Promise<void> {
 
     const projectDirectory = getProjectDirectory(projectName)
     const spinner = startSpinner(
-        `Checking directory ${chalk.cyan(projectDirectory)}...\n`,
+        `Checking directory ${color.cyan(projectDirectory)}...\n`,
     )
     const projectDirectoryExists = await pathExists(projectDirectory)
     if (projectDirectoryExists) {
         handleExistingProjectDirectory(projectDirectory, spinner)
     }
-    finishSpinner(spinner, chalk.green('Directory available'))
+    finishSpinner(spinner, color.green('Directory available'))
 
     const cloneSpinner = startSpinner(`Cloning template...\n`)
     await cloneRepo(templateRepo, projectDirectory)
-    finishSpinner(cloneSpinner, chalk.green(chalk.green('Template cloned')))
+    finishSpinner(cloneSpinner, color.green(color.green('Template cloned')))
 
     const installSpinner = startSpinner(
         'Installing dependencies (this may take a while)...\n',
     )
     await runInstall(projectDirectory)
-    finishSpinner(installSpinner, chalk.green('Dependencies installed'))
+    finishSpinner(installSpinner, color.green('Dependencies installed'))
 
     const templateSpinner = startSpinner('Setting up template...\n')
     await runPrepareScript(projectDirectory, projectName)
-    finishSpinner(templateSpinner, chalk.green('Template ready'))
+    finishSpinner(templateSpinner, color.green('Template ready'))
 
     finishSpinner(
         spinner,
-        chalk.green(
-            `Project ${chalk.cyan(projectName)} created in ${chalk.cyan(
+        color.green(
+            `Project ${color.cyan(projectName)} created in ${color.cyan(
                 projectDirectory,
             )}`,
         ),
