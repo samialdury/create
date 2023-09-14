@@ -1,61 +1,111 @@
 #!/usr/bin/env node
 
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import type { KeysOfMap } from './types.js'
+import packageJson from '../package.json'
 import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
+import {
+    CreateError,
+    isCreateError,
+    isInquirerError,
+    isUnknownError,
+} from './errors.js'
 import {
     checkIfFileExists,
     getProjectDirectory,
     handleExistingProjectDirectory,
 } from './files.js'
 import { cloneRepo } from './git.js'
-import { color, finishSpinner, printNextSteps, startSpinner } from './output.js'
-import { promptForProjectName } from './prompts.js'
+import {
+    color,
+    finishSpinner,
+    printHelp,
+    printNextSteps,
+    printVersion,
+    startSpinner,
+} from './output.js'
+import { promptForProjectName, promptForTemplateName } from './prompts.js'
 
-type KeysOfMap<T> = T extends Map<infer K, unknown> ? K : never
+const BASE_URL = 'https://github.com'
+const ISSUE_PATH = '/issues/new'
+
+const PACKAGE_NAME = packageJson.name
+const VERSION = packageJson.version
+const AUTHOR = packageJson.author
+
+const PROJECT_REPO_URL = `${BASE_URL}/samialdury/create`
+const ISSUE_URL = `${PROJECT_REPO_URL}${ISSUE_PATH}`
 
 const TEMPLATES = new Map([
-    ['nodejs-api', 'samialdury/nodejs-api'],
-    ['nodejs-project', 'samialdury/nodejs-project'],
+    [
+        'nodejs-api',
+        {
+            description: 'Node.js API template',
+            repository: `${BASE_URL}/samialdury/nodejs-api`,
+        },
+    ],
+    [
+        'nodejs-project',
+        {
+            description: 'Node.js project template',
+            repository: `${BASE_URL}/samialdury/nodejs-project`,
+        },
+    ],
 ] as const)
 
 function getValidTemplates(): string {
-    return [...TEMPLATES.keys()].join('\n- ')
+    return [...TEMPLATES.keys()].join('\n  - ')
 }
 
 async function main(): Promise<void> {
-    const template = process.argv[2] as KeysOfMap<typeof TEMPLATES> | undefined
-    if (!template) {
-        console.error(
-            `Please specify a template.\nValid templates are:\n- ${getValidTemplates()}`,
-        )
-        process.exit(1)
+    if (['--help', '-h', 'help'].includes(process.argv.at(2)!)) {
+        printHelp(PACKAGE_NAME, TEMPLATES, AUTHOR, VERSION)
+        process.exit(0)
+    } else if (['--version', '-v', 'version'].includes(process.argv.at(2)!)) {
+        printVersion(VERSION)
+        process.exit(0)
     }
-
-    const templateRepo = TEMPLATES.get(template)
-    if (!templateRepo) {
-        console.error(
-            `Template \`${template}\` not found.\nValid templates are:\n  - ${getValidTemplates()}`,
-        )
-        process.exit(1)
-    }
-
-    const projectName =
-        process.argv[3] ?? (await promptForProjectName(template))
 
     const bunAvailable = await isCmdAvailable('bun')
     if (!bunAvailable) {
-        console.error(
+        throw new CreateError(
             '`bun` is not installed. Please install it and try again.',
         )
-        process.exit(1)
+    }
+    const templateArgument = process.argv[2]
+
+    if (templateArgument && !TEMPLATES.get(templateArgument as never)) {
+        throw new CreateError(
+            `Template \`${templateArgument}\` not found.\n` +
+                color.reset(`Valid templates are:\n  - ${getValidTemplates()}`),
+        )
     }
 
+    const projectNameArgument = process.argv[3]
+
+    const template = (templateArgument ??
+        (await promptForTemplateName(TEMPLATES))) as KeysOfMap<typeof TEMPLATES>
+
+    const templateRepo = TEMPLATES.get(template)!.repository
+
+    let projectName =
+        projectNameArgument ?? (await promptForProjectName(template))
+
+    const relativeDirectory = projectName
+
+    // If the user specified a subdirectory,
+    // use only the last part as the project name
+    projectName = projectName.split('/').at(-1) ?? projectName
+
     console.log(
-        color.yellow(
+        color.cyan(
             `Creating project \`${projectName}\` from template \`${template}\`...\n`,
         ),
     )
 
-    const projectDirectory = getProjectDirectory(projectName)
+    const projectDirectory = getProjectDirectory(relativeDirectory)
     const directoryCheckSpinner = startSpinner(
         `Checking directory ${color.cyan(projectDirectory)}...\n`,
     )
@@ -87,7 +137,32 @@ async function main(): Promise<void> {
             )}`,
         ),
     )
-    printNextSteps(projectName)
+    printNextSteps(relativeDirectory)
 }
 
-await main()
+try {
+    await main()
+} catch (err) {
+    if (isCreateError(err)) {
+        console.error(color.red(err.message + '\n'))
+        process.exit(err.exitCode)
+    }
+
+    if (isInquirerError(err)) {
+        console.error(color.yellow('Cancelled' + '\n'))
+        process.exit(0)
+    }
+
+    if (isUnknownError(err)) {
+        console.error(color.red(err.message) + '\n')
+        console.error(
+            color.yellow(
+                `An unexpected error occurred. Please open an issue on GitHub:\n` +
+                    color.cyan(`${ISSUE_URL}\n`),
+            ),
+        )
+        process.exit(1)
+    }
+
+    process.exit(1)
+}
