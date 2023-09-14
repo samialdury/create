@@ -2,7 +2,7 @@
 
 # `@samialdury/create`
 
-[![CI status](https://github.com/samialdury/create/actions/workflows/ci.yaml/badge.svg)](https://github.com/samialdury/create/actions/workflows/ci.yml)
+[![CI status](https://github.com/samialdury/create/actions/workflows/ci.yml/badge.svg)](https://github.com/samialdury/create/actions/workflows/ci.yml)
 ![license](https://img.shields.io/github/license/samialdury/create)
 ![npm version](https://img.shields.io/npm/v/%40samialdury/create)
 
