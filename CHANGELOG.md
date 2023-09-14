@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/samialdury/create/compare/v1.2.0...v1.3.0) (2023-09-14)
+
+
+### Features
+
+* update description ([994d342](https://github.com/samialdury/create/commit/994d3423b27b0eb2c35f72aa095b963c2ee8ac18))
+
 # [1.2.0](https://github.com/samialdury/create/compare/v1.1.0...v1.2.0) (2023-09-14)
 
 
