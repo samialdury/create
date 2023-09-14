@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/samialdury/create/compare/v1.1.0...v1.2.0) (2023-09-14)
+
+
+### Features
+
+* refactor cli & update docs ([f50b464](https://github.com/samialdury/create/commit/f50b46471a91369d107b556c7d0e2d7df5774b37))
+
 # [1.1.0](https://github.com/samialdury/create/compare/v1.0.0...v1.1.0) (2023-09-13)
 
 
