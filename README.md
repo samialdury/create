@@ -8,7 +8,7 @@
 
 </div>
 
-This repo includes a CLI tool to create new projects from my templates.
+CLI tool to create new projects from my templates.
 
 ## Usage
 
