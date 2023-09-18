@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/samialdury/create/compare/v1.3.0...v1.4.0) (2023-09-18)
+
+
+### Features
+
+* enable `nextjs-project` template ([d16d53a](https://github.com/samialdury/create/commit/d16d53a4966f2a3ee975f3a4a226abb60a134e93))
+
 # [1.3.0](https://github.com/samialdury/create/compare/v1.2.0...v1.3.0) (2023-09-14)
 
 
