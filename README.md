@@ -39,7 +39,7 @@ You will be prompted to choose a template and provide a project name.
     - local HTTPS
     - GitHub Actions & GitHub Container Registry
 - [Next.js project](https://github.com/samialdury/nextjs-project)
-  - Next.js project template to kickstart your next project, without the headache of setting up all the tooling.
+  - Next.js project template to kickstart your next project, without the hassle setting up all the necessary tooling.
   - Stack:
     - Next.js (App Router)
     - TypeScript
