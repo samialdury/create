@@ -52,6 +52,7 @@ Arguments:
   <template>                    The template to use. Must be one of:
         nodejs-api              Node.js API template
         nodejs-project          Node.js project template
+        nextjs-project          Next.js project template
 
     If no template is specified, you will be prompted to choose one.
 
