@@ -5,7 +5,12 @@
 
 import type { KeysOfMap } from './types.js'
 import packageJson from '../package.json'
-import { isCmdAvailable, runInstall, runPrepareScript } from './cmds.js'
+import {
+    isCmdAvailable,
+    runInstall,
+    runPostInstall,
+    runPrepareScript,
+} from './cmds.js'
 import {
     CreateError,
     isCreateError,
@@ -134,6 +139,7 @@ async function main(): Promise<void> {
 
     const templateSpinner = startSpinner('Setting up template...\n')
     await runPrepareScript(projectDirectory, projectName)
+    await runPostInstall(projectDirectory, PACKAGE_NAME)
     finishSpinner(templateSpinner, color.green('Template ready'))
 
     finishSpinner(

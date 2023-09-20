@@ -78,7 +78,6 @@ export function printNextSteps(relativeDirectory: string): void {
     console.log()
     console.log('Next steps:')
     console.log(`  ${color.blue(`cd ${relativeDirectory}`)}`)
-    console.log(`  ${color.blue('git init')}`)
     console.log(`  ${color.blue('make help')}`)
     console.log()
 }
