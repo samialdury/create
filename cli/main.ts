@@ -75,10 +75,10 @@ async function main(): Promise<void> {
         process.exit(0)
     }
 
-    const bunAvailable = await isCmdAvailable('bun')
-    if (!bunAvailable) {
+    const gitAvailable = await isCmdAvailable('git')
+    if (!gitAvailable) {
         throw new CreateError(
-            '`bun` is not installed. Please install it and try again.',
+            '`git` is not installed. Please install it and try again.',
         )
     }
     const templateArgument = process.argv[2]
