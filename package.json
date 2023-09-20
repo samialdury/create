@@ -1,6 +1,6 @@
 {
     "name": "@samialdury/create",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "CLI tool to create new projects from my templates",
     "homepage": "https://github.com/samialdury/create#readme",
     "bugs": {

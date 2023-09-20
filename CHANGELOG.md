@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/samialdury/create/compare/v1.4.0...v1.5.0) (2023-09-20)
+
+
+### Features
+
+* auto run git init and initial commit ([71b2ed0](https://github.com/samialdury/create/commit/71b2ed024488903b1424ed02051e053f5a832e27))
+
 # [1.4.0](https://github.com/samialdury/create/compare/v1.3.0...v1.4.0) (2023-09-18)
 
 
