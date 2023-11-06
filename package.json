@@ -19,15 +19,15 @@
         "./dist"
     ],
     "dependencies": {
-        "@inquirer/prompts": "3.1.2",
+        "@inquirer/prompts": "3.2.0",
         "execa": "8.0.1",
         "ora": "7.0.1",
         "picocolors": "1.0.0",
         "which": "4.0.0"
     },
     "devDependencies": {
-        "@commitlint/cli": "17.7.2",
-        "@samialdury/config": "5.10.0",
+        "@commitlint/cli": "17.8.1",
+        "@samialdury/config": "5.11.3",
         "@types/node": "20.6.5",
         "@types/which": "3.0.1",
         "eslint": "8.49.0",
@@ -36,7 +36,7 @@
         "prettier": "3.0.3",
         "semantic-release": "21.1.2",
         "tsup": "7.2.0",
-        "tsx": "3.12.10",
+        "tsx": "3.14.0",
         "typescript": "5.2.2"
     },
     "engines": {
