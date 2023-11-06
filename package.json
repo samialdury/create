@@ -28,8 +28,8 @@
     "devDependencies": {
         "@commitlint/cli": "17.7.2",
         "@samialdury/config": "5.10.0",
-        "@types/node": "20.6.0",
-        "@types/which": "3.0.0",
+        "@types/node": "20.6.5",
+        "@types/which": "3.0.1",
         "eslint": "8.49.0",
         "husky": "8.0.3",
         "lint-staged": "14.0.1",
