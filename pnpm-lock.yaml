@@ -32,8 +32,8 @@ devDependencies:
     specifier: 20.8.10
     version: 20.8.10
   '@types/which':
-    specifier: 3.0.1
-    version: 3.0.1
+    specifier: 3.0.2
+    version: 3.0.2
   eslint:
     specifier: 8.52.0
     version: 8.52.0
@@ -1048,8 +1048,8 @@ packages:
     resolution: {integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==}
     dev: true
 
-  /@types/which@3.0.1:
-    resolution: {integrity: sha512-OJWjr4k8gS1HXuOnCmQbBrQez+xqt/zqfp5PhgbKtsmEFEuojAg23arr+TiTZZ1TORdUF9RKXb/WKEpT1dwgSg==}
+  /@types/which@3.0.2:
+    resolution: {integrity: sha512-UqCG7NjNyume6e+BHcFkOQOS8of/E18V2z/jTRkiD98YiiryYOFBVvPxqA/8PQCwkn7icKqz/hFflMIRN2HGhQ==}
     dev: true
 
   /@types/wrap-ansi@3.0.0:
