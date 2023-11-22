@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import type { KeysOfMap } from './types.js'
