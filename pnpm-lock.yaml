@@ -29,8 +29,8 @@ devDependencies:
     specifier: 6.2.0
     version: 6.2.0(@commitlint/cli@18.4.3)(eslint@8.54.0)(lint-staged@15.2.0)(prettier@3.1.0)(semantic-release@22.0.10)(typescript@5.3.3)
   '@types/node':
-    specifier: 20.10.1
-    version: 20.10.1
+    specifier: 20.10.4
+    version: 20.10.4
   '@types/which':
     specifier: 3.0.3
     version: 3.0.3
@@ -743,7 +743,7 @@ packages:
     dependencies:
       '@inquirer/type': 1.1.5
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.10.1
+      '@types/node': 20.10.4
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
@@ -1344,7 +1344,7 @@ packages:
   /@types/mute-stream@0.0.4:
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
     dependencies:
-      '@types/node': 20.10.1
+      '@types/node': 20.10.4
     dev: false
 
   /@types/node@18.18.8:
@@ -1353,8 +1353,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.10.1:
-    resolution: {integrity: sha512-T2qwhjWwGH81vUEx4EXmBKsTJRXFXNZTL4v0gi01+zyBmCwzE6TyHszqX01m+QHTEq+EZNo13NeJIdEqf+Myrg==}
+  /@types/node@20.10.4:
+    resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
     dependencies:
       undici-types: 5.26.5
 
