@@ -1,3 +1,20 @@
+## [1.5.1](https://github.com/samialdury/create/compare/v1.5.0...v1.5.1) (2023-12-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @inquirer/prompts to v3.3.0 ([#17](https://github.com/samialdury/create/issues/17)) ([c7578e5](https://github.com/samialdury/create/commit/c7578e535c165ad21586394c5372751515ef63fd))
+
+
+### Code Refactoring
+
+* remove Next.js template ([bfbae42](https://github.com/samialdury/create/commit/bfbae42a238b653c766886960c8924ae5a59e188))
+
+
+### BREAKING CHANGES
+
+* remove Next.js template
+
 # [1.5.0](https://github.com/samialdury/create/compare/v1.4.0...v1.5.0) (2023-09-20)
 
 
