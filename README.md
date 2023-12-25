@@ -38,17 +38,6 @@ You will be prompted to choose a template and provide a project name.
     - Docker Compose
     - local HTTPS
     - GitHub Actions & GitHub Container Registry
-- [Next.js project](https://github.com/samialdury/nextjs-project)
-  - Next.js project template to kickstart your next project, without the hassle setting up all the necessary tooling.
-  - Stack:
-    - Next.js (App Router)
-    - TypeScript
-    - ESLint
-    - Prettier
-    - Tailwind CSS
-    - shadcn/ui
-    - next-international
-    - GitHub Actions
 
 ## CLI options
 
@@ -63,7 +52,6 @@ Arguments:
   <template>                    The template to use. Must be one of:
         nodejs-api              Node.js API template
         nodejs-project          Node.js project template
-        nextjs-project          Next.js project template
 
     If no template is specified, you will be prompted to choose one.
 

@@ -57,13 +57,6 @@ const TEMPLATES = new Map([
             repository: `${BASE_URL}/samialdury/nodejs-project`,
         },
     ],
-    [
-        'nextjs-project',
-        {
-            description: 'Next.js project template',
-            repository: `${BASE_URL}/samialdury/nextjs-project`,
-        },
-    ],
 ] as const)
 
 function getValidTemplates(): string {
