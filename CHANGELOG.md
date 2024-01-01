@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/samialdury/create/compare/v1.5.1...v1.5.2) (2024-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ora to v8 ([#38](https://github.com/samialdury/create/issues/38)) ([a380bf0](https://github.com/samialdury/create/commit/a380bf0689a02751feda4890a1038420f82b585c))
+
 ## [1.5.1](https://github.com/samialdury/create/compare/v1.5.0...v1.5.1) (2023-12-25)
 
 
