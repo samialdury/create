@@ -37,7 +37,7 @@
         "semantic-release": "22.0.12",
         "tsup": "8.0.2",
         "tsx": "4.7.1",
-        "typescript": "5.4.2"
+        "typescript": "5.4.3"
     },
     "engines": {
         "node": ">=20",
