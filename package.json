@@ -20,7 +20,7 @@
     ],
     "dependencies": {
         "@inquirer/prompts": "3.3.2",
-        "execa": "8.0.1",
+        "execa": "9.2.0",
         "ora": "8.0.1",
         "picocolors": "1.0.0",
         "which": "4.0.0"
