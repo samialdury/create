@@ -30,7 +30,7 @@
         "@samialdury/config": "6.5.1",
         "@types/node": "20.12.7",
         "@types/which": "3.0.3",
-        "eslint": "8.57.0",
+        "eslint": "9.5.0",
         "husky": "8.0.3",
         "lint-staged": "15.2.2",
         "prettier": "3.2.5",
