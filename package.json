@@ -19,7 +19,7 @@
         "./dist"
     ],
     "dependencies": {
-        "@inquirer/prompts": "3.3.2",
+        "@inquirer/prompts": "5.0.6",
         "execa": "8.0.1",
         "ora": "8.0.1",
         "picocolors": "1.0.0",
